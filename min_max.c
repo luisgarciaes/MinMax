@@ -14,8 +14,9 @@ int* create_array() {
 
 int main() {
     int* arr = create_array();
-    int i;
-    for (i = 0; i < sizeof(arr); i++)
+    int i, sz;
+    sz = sizeof(arr) / sizeof(int);
+    for (i = 0; i < sz; i++)
         printf("%d ", arr[i]);
     free(arr);
     return 0;
