@@ -25,8 +25,9 @@ int* create_array(int sz, int* pSize) {
     return randArr;
 }
 int* find_min_max(int arr[] ) {
-    int max = sizeof(arr) / sizeof(arr[0]) - 1;
+    int max_index = sizeof(arr) / sizeof(arr[0]) - 1;
     int min = arr[0];
+    int max = arr[0];
 }
 int main() {
     int sz = 0;
@@ -39,8 +40,10 @@ int main() {
     }
     int* arr = create_array(sz, &sz);
     int i;
+    bubble_sort(arr,sz);
     for (i = 0; i < sz; i++)
         printf("%d ", arr[i]);
     free(arr);
     return 0;
+
 }
