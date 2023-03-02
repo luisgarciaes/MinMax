@@ -2,6 +2,19 @@
 #include <stdlib.h>
 #include <time.h>
 
+void bubble_sort(int arr[], int size) {
+    int i, j, temp;
+    for (i = 0; i < size - 1; i++) {
+        for (j = 0; j < size - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
 int* create_array(int sz, int* pSize) {
     int* randArr = malloc(sz * sizeof(int));
     srand(time(NULL));
@@ -11,7 +24,10 @@ int* create_array(int sz, int* pSize) {
     *pSize = sz;
     return randArr;
 }
-
+int* find_min_max(int arr[] ) {
+    int max = sizeof(arr) / sizeof(arr[0]) - 1;
+    int min = arr[0];
+}
 int main() {
     int sz = 0;
     char input[10];
