@@ -14,8 +14,13 @@ int* create_array(int sz, int* pSize) {
 
 int main() {
     int sz = 0;
+    char input[10];
     printf("Enter the size of array: ");
-    scanf("%d", &sz);
+    fgets(input, sizeof(input), stdin);
+    if (sscanf_s(input, "%d", &sz) != 1) {
+        printf("Invalid input. Please enter an integer value.\n");
+        return 1;
+    }
     int* arr = create_array(sz, &sz);
     int i;
     for (i = 0; i < sz; i++)
