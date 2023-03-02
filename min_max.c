@@ -12,6 +12,11 @@ int* create_array() {
     return randArr;
 }
 
-int main(){
-    create_array();
+int main() {
+    int* arr = create_array();
+    int i;
+    for (i = 0; i < sizeof(arr); i++)
+        printf("%d ", arr[i]);
+    free(arr);
+    return 0;
 }
