@@ -3,6 +3,11 @@
 #include <stdlib.h>
 
 #include <time.h>
+// program for finding the maximum and minimum values on an array
+// made by Luis Gerardo García Espinoza 6G
+// for the Parallel Programming class
+// taught by the professor RAMIREZ ALCARAZ JUAN MANUEL
+
 
 //function for the bubble sorting suggested in the instructions
 void bubble_sort(int arr[], int size) {
@@ -23,7 +28,7 @@ int* create_array(int sz, int* pSize) {
     srand(time(NULL));
     int i;
     for (i = 0; i < sz; i++)
-        randArr[i] = rand() % 100;
+        randArr[i] = rand() % 1000;
     *pSize = sz;
     return randArr;
 }
