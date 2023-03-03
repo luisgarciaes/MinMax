@@ -1,5 +1,7 @@
 #include <stdio.h>
+
 #include <stdlib.h>
+
 #include <time.h>
 
 void bubble_sort(int arr[], int size) {
@@ -24,14 +26,19 @@ int* create_array(int sz, int* pSize) {
     *pSize = sz;
     return randArr;
 }
-int* find_min_max(int arr[] ) {
+int* find_min_max(int arr[]) {
     int max_index = sizeof(arr) / sizeof(arr[0]) - 1;
     int min = arr[0];
     int max = arr[0];
+    printf("Minimum value in array: ");
+    printf("%d", min);
+    printf("Maximum value in array: ");
+    printf("%d ", max);
 }
 int main() {
     int sz = 0;
     char input[10];
+
     printf("Enter the size of array: ");
     fgets(input, sizeof(input), stdin);
     if (sscanf_s(input, "%d", &sz) != 1) {
@@ -40,10 +47,10 @@ int main() {
     }
     int* arr = create_array(sz, &sz);
     int i;
-    bubble_sort(arr,sz);
+    bubble_sort(arr, sz);
     for (i = 0; i < sz; i++)
         printf("%d ", arr[i]);
+    find_min_max(arr);
     free(arr);
     return 0;
-
 }
