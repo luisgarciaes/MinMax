@@ -26,20 +26,19 @@ void bubble_sort(int arr[], int size) {
 // this function creates a random array with custom size
 int* create_array(int sz, int* pSize) {
     int* randArr = malloc(sz * sizeof(int)); //allocating memory for dynamic access
-    srand(time(NULL)); //using the time for a completely random seed for picking a number
+    srand(time(NULL)); //using the time as a random seed for picking a number
     int i;
     for (i = 0; i < sz; i++) //loop for filling the array with random numbers from 0 to 1000
         randArr[i] = rand() % 1000;
     *pSize = sz;
     return randArr;
 }
-
 // this function takes an array and returns the maximum value and the minimum value
 int* find_min_max(int arr[], int length) {
     int max_index = length - 1;
     int min = arr[0];
     int max = arr[max_index];
-    printf("\nMINIMUM VALUE IN THE ARRAY: ");
+    printf("MINIMUM VALUE IN THE ARRAY: ");
     printf("%d\n", min);
     printf("MAXIMUM VALUE IN THE ARRAY: ");
     printf("%d\n ", max);
@@ -51,6 +50,8 @@ int main() {
     printf("\n////////////////////////////////////////////////////\n\n"); 
 
     // code part starts here
+    clock_t start1, end1, start2, end2, start3, end3; // these are for measuring the time it takes for the functions to execute
+    double cpu_time_used1, cpu_time_used2, cpu_time_used3;
     int sz = 0;
     char input[10];
 
@@ -60,16 +61,29 @@ int main() {
         printf("INVALID INPUT. PLEASE ENTER AN INTEGER VALUE\n");
         return 1;
     }
+
     printf("\n////////////////////////////////////////////////////\n\n");
+
+    start1 = clock();
     int* arr = create_array(sz, &sz);
-    int i;
+    end1 = clock();
+
+    start2 = clock();
     bubble_sort(arr, sz); // using the function we made earlier to sort the array
-    printf("SORTED ARRAY: ");
-    printf("[ ");
-    for (i = 0; i < sz; i++)
-        printf("%d ", arr[i]);
-    printf("]");
-    find_min_max(arr,sz); // same thing as earlier
+    end2 = clock();
+
+    start3 = clock();
+    find_min_max(arr, sz);
+    end3 = clock();
+
+    cpu_time_used1 = ((double)(end1 - start1)) / CLOCKS_PER_SEC;
+    cpu_time_used2 = ((double)(end2 - start2)) / CLOCKS_PER_SEC;
+    cpu_time_used3 = ((double)(end3 - start3)) / CLOCKS_PER_SEC;
+
+    printf("\n////////////////////////////////////////////////////\n\n");
+    printf("TIME TAKEN FOR create_array FUNCTION: %f seconds\n", cpu_time_used1);
+    printf("TIME TAKEN FOR bubble_sort FUNCTION: %f seconds\n", cpu_time_used2);
+    printf("TIME TAKEN FOR find_min_max FUNCTION: %f seconds\n", cpu_time_used3);
     free(arr); //freeing up memory
     return 0;
 }
