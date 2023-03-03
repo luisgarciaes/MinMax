@@ -29,7 +29,7 @@ int* create_array(int sz, int* pSize) {
     srand(time(NULL)); //using the time as a random seed for picking a number
     int i;
     for (i = 0; i < sz; i++) //loop for filling the array with random numbers from 0 to 1000
-        randArr[i] = rand() % 1000;
+        randArr[i] = (rand() % 1000) + 1;
     *pSize = sz;
     return randArr;
 }
@@ -81,9 +81,10 @@ int main() {
     cpu_time_used3 = ((double)(end3 - start3)) / CLOCKS_PER_SEC;
 
     printf("\n////////////////////////////////////////////////////\n\n");
-    printf("TIME TAKEN FOR create_array FUNCTION: %f seconds\n", cpu_time_used1);
-    printf("TIME TAKEN FOR bubble_sort FUNCTION: %f seconds\n", cpu_time_used2);
-    printf("TIME TAKEN FOR find_min_max FUNCTION: %f seconds\n", cpu_time_used3);
+    printf("TIME TAKEN FOR create_array FUNCTION: %f seconds\n", cpu_time_used1);//the runtime for create_array and find_min_max seem to be near zero almost every time
+    printf("TIME TAKEN FOR bubble_sort FUNCTION: %f seconds\n", cpu_time_used2);//it only changes with what I can assume is hardware or software variance
+    printf("TIME TAKEN FOR find_min_max FUNCTION: %f seconds\n", cpu_time_used3);// on the other hand, bubble_sort seems to increase its runtime directly related to how big the array is
+
     free(arr); //freeing up memory
     return 0;
 }
